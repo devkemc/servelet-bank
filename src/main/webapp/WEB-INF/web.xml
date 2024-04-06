@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+	<display-name>Contatos</display-name>
+	<servlet>
+		<servlet-name>GestaoContatos</servlet-name>
+		<servlet-class>br.com.devkemc.serveletbank.contatos.infraestrutura.web.GestaoContatos</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GestaoContatos</servlet-name>
+		<url-pattern>/gestaoContatos</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AcessarSistema</servlet-name>
+		<servlet-class>br.com.devkemc.serveletbank.seguranca.infraestrutura.web.AcessarSistema</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AcessarSistema</servlet-name>
+		<url-pattern>/acessar</url-pattern>
+	</servlet-mapping>
+	<session-config>
+		<session-timeout>
+			30
+		</session-timeout>
+	</session-config>
+	 <filter>
+        <filter-name>GarantirAutenticacao</filter-name>
+        <filter-class>br.com.devkemc.serveletbank.seguranca.infraestrutura.web.GarantirAutenticacao</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>GarantirAutenticacao</filter-name>
+        <url-pattern>/restrito/*</url-pattern>
+    </filter-mapping>
+</web-app>
